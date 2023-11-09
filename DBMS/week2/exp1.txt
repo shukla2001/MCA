@@ -1,0 +1,113 @@
+SQL> desc emp
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                     NOT NULL NUMBER(4)
+ ENAME                                              VARCHAR2(10)
+ JOB                                                VARCHAR2(9)
+ MGRID                                              NUMBER(4)
+ DATE_JOIN                                          DATE
+ SAL                                                NUMBER(7,2)
+ COMM                                               NUMBER(7,2)
+ DEPTNO                                             VARCHAR2(30)
+ DATE_BIRTH                                         DATE
+
+SQL> desc dept
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DNO                                                VARCHAR2(3)
+ DNAME                                              VARCHAR2(10)
+ LOCATION                                           VARCHAR2(9)
+
+SQL> desc proj
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DNO                                       NOT NULL VARCHAR2(3)
+ PRJ_NO                                             VARCHAR2(5)
+ PRJ_NAME                                           VARCHAR2(20)
+ PRJ_CREDIT                                         NUMBER(2)
+ STRT_DATE                                          DATE
+ END_DATE                                           DATE
+
+SQL> alter table emp add foreign key(deptno, prj_id) references proj;
+alter table emp add foreign key(deptno, prj_id) references proj
+                                        *
+ERROR at line 1:
+ORA-00904: "PRJ_ID": invalid identifier
+
+
+SQL> alter table proj add primary key(dno, prj_no);
+
+Table altered.
+
+SQL>  alter table emp add prj_id varchar(5);
+
+Table altered.
+
+SQL> desc proj
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DNO                                       NOT NULL VARCHAR2(3)
+ PRJ_NO                                    NOT NULL VARCHAR2(5)
+ PRJ_NAME                                           VARCHAR2(20)
+ PRJ_CREDIT                                         NUMBER(2)
+ STRT_DATE                                          DATE
+ END_DATE                                           DATE
+
+SQL> alter table emp add foreign key(deptno, prj_id) references proj;
+
+Table altered.
+
+SQL> alter table emp add constraint VALID_EMPNO_Cons check(empno > 100);
+
+Table altered.
+
+SQL> alter table dept add dept_budget number(7);
+
+Table altered.
+
+SQL> alter table proj add prj_fund number(7);
+
+Table altered.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> desc proj
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DNO                                       NOT NULL VARCHAR2(3)
+ PRJ_NO                                    NOT NULL VARCHAR2(5)
+ PRJ_NAME                                           VARCHAR2(20)
+ PRJ_CREDIT                                         NUMBER(2)
+ STRT_DATE                                          DATE
+ END_DATE                                           DATE
+ PRJ_FUND                                           NUMBER(7)
+
+SQL> desc dept
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DNO                                                VARCHAR2(3)
+ DNAME                                              VARCHAR2(10)
+ LOCATION                                           VARCHAR2(9)
+ DEPT_BUDGET                                        NUMBER(7)
+
+SQL> desc emp
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                     NOT NULL NUMBER(4)
+ ENAME                                              VARCHAR2(10)
+ JOB                                                VARCHAR2(9)
+ MGRID                                              NUMBER(4)
+ DATE_JOIN                                          DATE
+ SAL                                                NUMBER(7,2)
+ COMM                                               NUMBER(7,2)
+ DEPTNO                                             VARCHAR2(30)
+ DATE_BIRTH                                         DATE
+ PRJ_ID                                             VARCHAR2(5)
+
+SQL> commit;
+
+Commit complete.
+
+

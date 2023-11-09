@@ -1,0 +1,2 @@
+create table proj(dno varchar(3) not null constraint dno_fk_dept_cons references dept(dno), prj_no varchar(5) constraint p_likeprjno_cons check(prj_no like 'P%'), prj_name varchar(20), prj_credit number(2) constraint prj_credit_range_cons check(prj_credit >= 1 and prj_credit <= 10), strt_date date, end_date date, constraint enddate_grt_strt_cons check(end_date > strt_date),
+prj_fund Number(7));
