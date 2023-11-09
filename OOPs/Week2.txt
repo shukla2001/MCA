@@ -1,0 +1,431 @@
+//Program to print patterns
+//Author:Brijesh
+//Date: 17/08/2023
+
+
+#include<iostream>
+using namespace std;
+
+int main()
+{
+        int choice,count=1;
+        int i,j,n;
+        int q=1,r=0,s;
+        cout<<"\t\tMenu";
+        cout<<"\n1.* Patterns\n2.Alphabet Patterns\n3.Number Patterns(Floyd's Triangle)";
+        cout<<"\nEnter your choice";
+        cin>>choice;
+        switch(choice)
+        {
+                case 1:
+                        cout<<"\nEnter no.of rows";
+                        cin>>n;
+                        for(i=n;i>=1;--i)
+                        {
+                                for(j=1;j<=i;++j)
+                                {
+                                        cout<<"*\t";
+                                }
+                                cout<<endl;
+  			}
+                        break;
+                        cout<<endl;
+
+
+                case 2:
+                        cout<<"Enter no.of alphabets";
+                        cin>>n;
+                        for(i=n;i>=1;--i)
+                        {
+                                for(j=1;j<=i;++j)
+                                {
+                                        cout<<((char)(j+64))<<"\t";
+                                }
+                                cout<<endl;
+                        }
+                        cout<<endl;
+                        break;
+
+
+                case 3:
+                        cout << "Enter no.of rows : " << endl;
+                        cin >> n;
+                        cout<<endl;
+                        while (r < n)
+                        {
+                                s = 0;
+                                while (s <= r)
+                                {
+					 cout <<q<<" ";
+                                        q+=1;
+                                        s+=1;
+                                }
+                                cout <<endl;
+                                r+=1;
+                        }
+                        cout<<endl;
+                        break;
+
+                default:
+                        cout<<"Invalid choice";
+                        break;
+
+        }
+        return 0;
+}
+
+//PerfectCube
+//Author :Brijesh
+//Date:23/08/2023
+
+
+#include<iostream>
+using namespace std;
+
+void perfectCube( long int N)
+{
+         long int cube;
+        for( int i=0;i<=N;i++)
+        {
+                cube=i*i*i;
+                if(cube==N)
+                {
+                        cout<<N<<" is a Perfect Cube ,cube root is "<<i<<endl;
+                        cout<<"\n";
+                        return;
+                }
+                else if(cube>N)
+                {
+                        cout<<"\nNot a Perfect Cube"<<endl;;
+                        cout<<"\n";
+                        return;
+                }
+        }
+}
+
+int main()
+{
+         long int N;
+        cout<<"Enter a number";
+        cin>>N;
+        perfectCube(N);
+        return 0;
+}
+
+
+
+
+//C++ program to convert a decimal number to its equivalent binary format
+//Author:Brijesh
+//Date :24/08/2023
+
+#include<iostream>
+#include<cmath>
+using namespace std;
+
+long int decimalToBinary(long  int decimal)
+{
+        long int binary=0,base=1;
+        while(decimal>0)
+        {
+                binary+=(decimal%2)*base;
+                decimal/=2;
+                base*=10;
+        }
+        return binary;
+}
+
+long int binaryToDecimal(long int binary)
+{
+        long int decimal=0,base=0;
+        while(binary>0)
+        {
+                int last_digit = binary%10;
+                decimal+=last_digit*pow(2,base);
+                binary/=10;
+                base++;
+	  }
+        return decimal;
+}
+
+int main()
+{
+        int choice;
+        while(true)
+        {
+                cout<<"\t\tMENU";
+                cout<<"\n1.Decimal to Binary\n2.Binary to Decimal\n3.Exit";
+                cout<<"\nEnter your choice";
+                cin>>choice;
+                switch(choice)
+                {
+                        case 1:
+                                long int decimal;
+                                cout<<"\nEnter decimal number";
+                                cin>>decimal;
+                                cout<<"\nBinary equivalent "<<decimalToBinary(decimal)<<endl;
+                                break;
+
+
+                        case 2:
+                                long int binary;
+                                cout<<"\nEnter binayr number";
+                                cin>>binary;
+                                cout<<"\nDecimal equivalent "<<binaryToDecimal(binary)<<endl;
+                                break;
+
+			  case 3:
+                                cout<<"\nExiting....";
+                                cout<<endl;
+                                return 0;
+
+                        default:
+                                cout<<"\nInvalid choice , Choose Again"<<endl;
+                }
+        }
+        return 0;
+}
+
+
+
+
+//Program to generate first n squence of fibonacci sequence
+//Author :Brijesh
+//Date:17/08/2023
+
+
+
+#include<iostream>
+using namespace std;
+
+int main()
+{
+        int n;
+        cout<<"\nEnter no.of terms";
+        cin>>n;
+        long int f1=0,f2=1,f3,i=2;
+        cout<<f1<<endl;
+        cout<<f2<<endl;
+        while(i<n)
+        {
+                f3=f1+f2;
+                f1=f2;
+                f2=f3;
+                cout<<f3<<endl;
+                i++;
+        }
+        cout<<endl;
+        return 0;
+}
+
+
+
+
+
+
+//C++ program to generate prime numbers between two limits.
+//Author:Brijesh
+//Date:24/08/2023
+
+
+#include<iostream>
+using namespace std;
+
+void prime(int lower, int upper)
+{
+        int flag;
+        for(int i=lower;i<=upper;i++)
+        {
+                if(i==1||i==0)
+                        continue;
+                flag=1;
+                for(int j=2;j<=i/2;++j)
+                {
+                        if(i%j==0)
+                        {
+                                flag=0;
+                                break;
+                        }
+                }
+                if(flag==1)
+                {
+                        cout<<i<<" ";
+                }
+        }
+	 cout<<endl;
+}
+
+int main()
+{
+        int lower,upper;
+        cout<<"\nEnter lower limit"<<endl;
+        cin>>lower;
+        cout<<"\nEnter upper limit"<<endl;
+        cin>>upper;
+        cout<<endl;
+        prime(lower,upper);
+        return 0;
+}
+
+
+
+
+//C++ program to implement the solution to change making problem.
+//Author :Brijesh
+//Date:24/08/2023
+
+
+
+#include<iostream>
+using namespace std;
+
+void changeMaking(int totalBill,int cashPaid)
+{
+        int balance = cashPaid-totalBill;
+        int denominations[]={2000,500,200,100,50,20,10,5,2,1};
+        int numDenominations = sizeof(denominations)/sizeof(denominations[0]);
+        cout<<"\nBalance amount to be generated : { ";
+        for(int i=0;i<numDenominations;i++)
+        {
+                while(balance>=denominations[i])
+                {
+                        cout<<denominations[i];
+                        balance-=denominations[i];
+                        /*if(balance>=denominations[i])
+                        {
+                                //cout<<" , ";
+                        }*/
+                        cout<<",";
+                }//while(balance>=denominations[i]);
+        }
+        cout<<"}"<<endl;
+}
+
+int main()
+{
+        int totalbill,cashpaid;
+        cout<<"\nEnter Total bill amount"<<endl;
+        cin>>totalbill;
+        cout<<"\nEnter Cahs paid "<<endl;
+        cin>>cashpaid;
+        changeMaking(totalbill,cashpaid);
+        return 0;
+}
+
+
+
+
+//Define a structure to represent the bank account of a customer
+//Author:Brijesh
+//Date:23/08/2023
+
+
+#include<iostream>
+using namespace std;
+
+struct BankAccount
+{
+        string cust_name;
+        string acc_no;
+        string acc_type;
+        double balance;
+};
+
+double deposit(BankAccount &ba,double amount)
+{
+        if(amount>0)
+        {
+                ba.balance+=amount;
+                cout<<"\nDeposited : "<<amount<<endl;
+                cout<<"\nTotal balance : "<<ba.balance<<endl;
+        }
+        else
+        {
+                cout<<"\nInvalid amount for deposit";
+        }
+}
+
+double withdraw(BankAccount &ba ,double amount)
+{
+        if(amount>0  && ba.balance>=amount)
+        {
+                ba.balance-=amount;
+                cout<<"\nWithdrew : "<<amount<<endl;
+                cout<<"\nTotal balance : "<<ba.balance;
+        }
+        else
+        {
+                cout<<"\nInsufficient balance";
+        }
+}
+
+int main()
+{
+        BankAccount ba;
+        cout<<"\nEnter customer name"<<endl;
+        cin>>ba.cust_name;
+        cout<<"\nEnter account no."<<endl;
+        cin>>ba.acc_no;
+        cout<<"\nEnter account type"<<endl;
+        cin>>ba.acc_type;
+        cout<<"\nEnter balance amount "<<endl;
+        cin>>ba.balance;
+ 	int choice;
+        double amount;
+        while(true)
+        {
+                cout<<"\n\t\tMENU";
+                cout<<"\n1.Deposit \n2.Withdrawal\n3.Exit";
+                cin>>choice;
+                switch(choice)
+                {
+                        case 1:
+                                cout<<"\nEnter deposit amount"<<endl;
+                                cin>>amount;
+                                cout<<deposit(ba,amount)<<endl;
+                                break;
+
+                        case 2:
+                                cout<<"\nEnter withdrawal amount"<<endl;
+                                cin>>amount;
+                                cout<<withdraw(ba,amount)<<endl;
+                                break;
+
+			
+                        case 3:
+                                cout<<"\nExiting....."<<endl;
+                                return 0;
+
+                        default:
+                                cout<<"\nInvalid choice";
+                                break;
+
+                }
+        }
+        return 0;
+}
+
+
+
+
+     
+
+
+
+
+                     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                   

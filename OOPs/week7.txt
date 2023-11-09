@@ -1,0 +1,319 @@
+1:
+
+#include<iostream>
+using namespace std;
+
+class Person
+{
+        int id;
+        char name[25];
+        public:
+                void getdata()
+                {
+                        cout<<"Enter id :"<<endl;
+                        cin>>id;
+                        cout<<"Enter name: "<<endl;
+                        cin>>name;
+                }
+                void display()
+                {
+                        cout<<"ID: "<<id<<endl;
+                        cout<<"Name: "<<name<<endl;
+                }
+};
+
+class Teaching : public Person
+{
+        public:
+                char subject[20];
+                void getdata_teach()
+                {
+                        getdata();
+                        cout<<"Enter subject : "<<endl;
+                        cin>>subject;
+                }
+
+                void display_teach()
+                {
+                        display();
+                        cout<<"Subject: "<<subject<<endl;
+                }
+};
+class Non_teaching : public Person
+{
+        public:
+                char dept[20];
+                void getdata_nonteach()
+                {
+                        getdata();
+                        cout<<"Enter department: "<<endl;
+                        cin>>dept;
+                }
+
+                void display_nonteach()
+                {
+                        display();
+                        cout<<"Department: "<<dept<<endl;
+                }
+};
+class Instructor : public Person
+{
+        public:
+                int exp;
+                void getdata_inst()
+                {
+                        getdata();
+                        cout<<"Enter experience: "<<endl;
+                        cin>>exp;
+                }
+
+                void display_inst()
+                {
+                        display();
+                        cout<<"Experience: "<<exp<<" years"<<endl;
+                }
+};
+int main()
+{
+   int choice;
+    while (true)
+    {
+        cout << "1. Teaching Staff\n2. Non-Teaching Staff\n3. Instructors\n4. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice)
+        {
+            case 1:
+            {
+                Teaching teacher;
+                cout << "Enter details for Teaching Staff:" << endl;
+                teacher.getdata_teach();
+                cout << "\nDisplaying details for Teaching Staff:" << endl;
+                teacher.display_teach();
+                break;
+            }
+            case 2:
+            {
+                Non_teaching nonTeach;
+                cout << "Enter details for Non-Teaching Staff:" << endl;
+                nonTeach.getdata_nonteach();
+                cout << "\nDisplaying details for Non-Teaching Staff:" << endl;
+                nonTeach.display_nonteach();
+                break;
+            }
+            case 3:
+            {
+                Instructor instructor;
+                cout << "Enter details for Instructors:" << endl;
+                instructor.getdata_inst();
+                cout << "\nDisplaying details for Instructors:" << endl;
+                instructor.display_inst();
+                break;
+            }
+            case 4:
+                return 0; // Exit the program
+            default:
+                cout << "Invalid choice. Please enter a valid option." << endl;
+        }
+    }
+
+    return 0;
+}
+
+
+
+output:
+
+Enter your choice: 2
+Enter details for Non-Teaching Staff:
+Enter id :
+14
+Enter name:
+manoj
+Enter department:
+dsa
+
+Displaying details for Non-Teaching Staff:
+ID: 14
+Name: manoj
+Department: dsa
+1. Teaching Staff
+2. Non-Teaching Staff
+3. Instructors
+4. Exit
+
+
+
+2:
+
+#include<iostream>
+using namespace std;
+class Employee
+{
+        int empno;
+        char ename[25];
+
+        public:
+                void get_emp()
+                {
+                        cout<<"Code: "; cin>>empno;
+                        cout<<"Name: "; cin>>ename;
+                }
+                void display_emp()
+                {
+                        cout<<"Code : "<<empno<<endl;
+                        cout<<"Name : "<<ename<<endl;
+                }
+};
+class Faculty : public Employee
+{
+        char qualification[10];
+        int exp;
+
+        public:
+                void get_faculty()
+                {
+                        get_emp();
+                        cout<<"Qualification: "; cin>>qualification;
+                        cout<<"Years of experience: "; cin>>exp;
+                }
+
+                void display_faculty()
+                {
+                        display_emp();
+                        cout<<"Qualification : "<<qualification<<endl;
+                        cout<<"Years of experience : "<<exp<<endl;
+                }
+};
+class Non_teaching : public Employee
+{
+        char grade;
+        public:
+                void get_nonteach()
+                {
+                        get_emp();
+                        cout<<"Grade: "; cin>>grade;
+                }
+
+                void display_nonteach()
+                {
+                        display_emp();
+                        cout<<"Grade : "<<grade<<endl;
+                }
+};
+class Permanent : public Faculty
+{
+        float basic,allowance;
+        public:
+                void get_per()
+                {
+                        get_faculty();
+                        cout<<"Basic pay: "; cin>>basic;
+                        cout<<"Academic allowance: "; cin>>allowance;
+                }
+
+                void display_per()
+                {
+                        display_faculty();
+                        cout<<"Basic Pay : "<<basic<<endl;
+                        cout<<"Academic allowance : "<<allowance<<endl;
+                }
+};
+class Contract : public Faculty
+{
+        int years;
+        public:
+                void get_cont()
+                {
+                        get_faculty();
+                        cout<<"Probation years: ";cin>>years;
+                }
+
+                void display_cont()
+                {
+                        display_faculty();
+                        cout<<"Probation years : "<<years<<endl;
+                }
+};
+
+int main()
+{
+    int choice;
+    while (true)
+    {
+        cout << "1. Permanent Faculty\n2. Contract Faculty\n3. Non-Teaching Staff\n4. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice)
+        {
+            case 1:
+            {
+                Permanent per;
+                cout << "Enter details for Permanent Faculty:" << endl;
+                per.get_per();
+                cout << "\nDisplaying details for Permanent Faculty:" << endl;
+                per.display_per();
+                break;
+            }
+            case 2:
+            {
+                Contract cont;
+                cout << "Enter details for Contract Faculty:" << endl;
+                cont.get_cont();
+                cout << "\nDisplaying details for Contract Faculty:" << endl;
+                cont.display_cont();
+                break;
+            }
+            case 3:
+            {
+                Non_teaching nonTeach;
+                cout << "Enter details for Non-Teaching Staff:" << endl;
+                nonTeach.get_nonteach();
+                cout << "\nDisplaying details for Non-Teaching Staff:" << endl;
+                nonTeach.display_nonteach();
+                break;
+            }
+            case 4:
+                return 0; // Exit the program
+            default:
+                cout << "Invalid choice. Please enter a valid option." << endl;
+        }
+    }
+
+    return 0;
+}
+
+
+
+1. Permanent Faculty
+2. Contract Faculty
+3. Non-Teaching Staff
+4. Exit
+Enter your choice: 1
+Enter details for Permanent Faculty:
+Code: 106
+Name: kamnesh
+Qualification: SSC
+Years of experience: 5
+Basic pay: 5000
+Academic allowance: 2
+
+Displaying details for Permanent Faculty:
+Code : 106
+Name : kamnesh
+Qualification : SSC
+Years of experience : 5
+Basic Pay : 5000
+Academic allowance : 2
+1. Permanent Faculty
+2. Contract Faculty
+3. Non-Teaching Staff
+4. Exit
+Enter your choice: 4
+
+
+
+
+

@@ -1,0 +1,283 @@
+
+//Create a flight class that has private data members and public member functions
+//Kameshwar shukla
+//230970055
+//4-09-2023
+
+
+#include<iostream>
+using namespace std;
+class flight{
+        int flight_no;
+        char destination[20];
+        float distance,fuel;
+
+        void calculate_fuel(void);
+        public: flight(){
+                distance=500;
+                }
+                void information_entry(void);
+                void display_info(void);
+};
+void flight :: information_entry(void){
+        cout<<"Enter the flight number:";cin>>flight_no;
+        cout<<"Enter the destination:";cin>>destination;
+        cout<<"Enter the distance:";cin>>distance;
+        calculate_fuel();
+}
+void flight :: display_info(void){
+        cout<<"\nFlight number:"<<flight_no;
+        cout<<"\nDestination:"<<destination;
+        cout<<"\nDistance:"<<distance;
+        cout<<"\nFuel used:"<<fuel;
+  cout<<endl;
+}
+void flight :: calculate_fuel(void){
+        if(distance<=1000)
+                fuel=500;
+        else if(distance<=2000)
+                fuel=1100;
+        else if(distance>2000)
+                fuel=2200;
+}
+int main(){
+        flight f;
+        f.information_entry();
+        f.display_info();
+        cout<<endl;
+        return 0;
+}
+
+
+
+
+
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+class bank_account {
+    char name[20], ac_type[20];
+    float balance;
+    int ac_number;
+
+public:
+    bank_account() {
+        balance = 500;
+    }
+
+    void enterData() {
+        cout << "\nEnter name : ";
+        cin >> name;
+        cout << "Enter Account type[Savings(S),Fixed(F) or Current(C)]:";
+        cin >> ac_type;
+        if (ac_type[0] == 'S')
+            strcpy(ac_type, "Savings");
+        else if (ac_type[0] == 'F')
+            strcpy(ac_type, "Fixed");
+        else if (ac_type[0] == 'C')
+            strcpy(ac_type, "Current");
+        else {
+            cout << "Invalid choice\n";
+            exit(0);
+        }
+        cout << "Enter account number : ";
+        cin >> ac_number;
+    }
+
+    void deposit() {
+        int amt;
+        cout << "\nEnter the amount to deposit : ";
+        cin >> amt;
+        if (amt <= 0)
+            cout << "Amount should be greater than 0\n";
+        else {
+            balance += amt;
+            cout << "Amount deposited\n";
+        }
+    }
+
+    void display() {
+        cout << "\nCustomer name  : " << name;
+        cout << "\nAccount type   : " << ac_type;
+        cout << "\nAccount number : " << ac_number;
+        cout << "\nBalance        : " << balance << endl;
+    }
+
+    friend void withdraw(bank_account &account);
+};
+
+
+void withdraw(bank_account &account) {
+    int amt;
+    cout << "\nEnter the amount to be withdrawn : ";
+    cin >> amt;
+    if (amt > account.balance)
+        cout << "\nInsufficient balance ";
+    else {
+        account.balance -= amt;
+        cout << "Amount withdrawn\n";
+    }
+}
+
+int main() {
+    bank_account obj[2];
+    for (int i = 0; i < 2; i++) {
+        obj[i].enterData();
+        obj[i].deposit();
+        withdraw(obj[i]); 
+        obj[i].display();
+    }
+    return 0;
+}
+
+
+
+
+
+
+// Avg Run calculator using function overloading
+
+// Date : 4-09-2023 
+
+#include<iostream>
+#include<cstring>
+using namespace std;
+
+class cricket_player{
+        int matches_played,not_out_times;
+        char name[20],player_code[6];
+
+        public:
+                int total_runs;
+                void inputData(){
+                        cout<<"Enter Player code : ";
+                        cin>>player_code;
+                        cout<<"Enter Player name : ";
+                        cin>>name;
+                        cout<<"Enter no. of matches played : ";
+                        cin>>matches_played;
+                        cout<<"Enter total runs : ";
+                        cin>>total_runs;
+                        cout<<"Enter no. of Not outs : ";
+                        cin>>not_out_times;
+                }
+                void display(){
+                        cout<<"\nPlayer code : "<<player_code;
+                        cout<<"\nPlayer Name : "<<name;
+                        cout<<"\nNumber of matches playes : "<<matches_played;
+                        cout<<"\nTotal runs  : "<<total_runs;
+                        cout<<"\nNumber of Not outs : "<<not_out_times;
+                }
+
+                float getAvgRun(){
+                        return total_runs/matches_played;
+                }
+                
+                
+                float getAvgRun(int not_outs){
+                    return (total_runs - not_outs)/matches_played;
+                }
+};
+
+
+int main(){
+        cricket_player obj[10];
+        int n,temp,not_outs;
+        cout<<"Enter number of players : ";
+        cin>>n;
+        for(int i=0;i<n;i++){
+                cout<<"Enter detail of player "<<i+1<<endl;
+                obj[i].inputData();
+        }
+
+        cout<<"Enter player no. to get his average run : ";
+        cin>>temp;
+        cout<<"Average run of Player "<<temp<<" is : "<<obj[temp-1].getAvgRun();
+        
+       
+        cout<<"\nEnter number of not outs to exclude from average run calculation: ";
+        cin>>not_outs;
+        cout<<"Average run of Player "<<temp<<" excluding "<<not_outs<<" not outs is: "<<obj[temp-1].getAvgRun(not_outs);
+
+        cout<<"\nAverage runs of all players : \n";
+        for(int i=0;i<n;i++){
+                cout<<"Player "<<i+1<<"'s average score : "<<obj[i].getAvgRun()<<endl;
+        }
+
+        cout<<"List of players in sorted order as per total runs : ";
+        cricket_player tempObj;
+        for(int i=0;i<n-1;i++)
+                for(int j=1;j<n-i-1;j++)
+                        if(obj[j].total_runs>obj[j+1].total_runs){
+                                tempObj = obj[i];
+                                obj[i] = obj[j];
+                                obj[j] = tempObj;
+        }
+        for(int i=0;i<n;i++){
+                obj[i].display();
+                cout<<endl;
+        }
+
+        return 0;
+}
+
+
+
+
+
+
+
+#include <iostream>
+using namespace std;
+
+class Complex {
+private:
+    double real;
+    double imaginary;
+
+public:
+    Complex() : real(0.0), imaginary(0.0) {}
+
+    Complex(double r, double i) : real(r), imaginary(i) {}
+
+    Complex add(int s1, Complex s2) {
+        return Complex(s1 + s2.real, s2.imaginary);
+    }
+
+    Complex add(Complex s1, Complex s2) {
+        return Complex(s1.real + s2.real, s1.imaginary + s2.imaginary);
+    }
+
+    void display() {
+        std::cout << real << " + " << imaginary << "i" << std::endl;
+    }
+};
+
+int main() {
+    double real1, imaginary1, real2, imaginary2;
+    int integer1;
+
+    std::cout << "Enter the real and imaginary parts of the first complex number: ";
+    std::cin >> real1 >> imaginary1;
+
+    std::cout << "Enter an integer: ";
+    std::cin >> integer1;
+
+    std::cout << "Enter the real and imaginary parts of the second complex number: ";
+    std::cin >> real2 >> imaginary2;
+
+    Complex c1(real1, imaginary1);
+    Complex c2(real2, imaginary2);
+
+    Complex result1 = c1.add(integer1, c2);
+    Complex result2 = c1.add(c1, c2);
+
+    std::cout << "Result of adding an integer and a complex number: ";
+    result1.display();
+
+    std::cout << "Result of adding two complex numbers: ";
+    result2.display();
+
+    return 0;
+}

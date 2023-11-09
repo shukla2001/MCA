@@ -1,0 +1,78 @@
+
+CREATE OR REPLACE PACKAGE Emp_pack AS
+
+    PROCEDURE Cal_sum(
+        p_deptname IN VARCHAR2,
+        p_salary_sum OUT NUMBER
+    );
+
+    FUNCTION GetEmp_proj(
+        p_prj_name IN VARCHAR2
+    ) RETURN NUMBER;
+END Emp_pack;
+/
+
+CREATE OR REPLACE PACKAGE BODY Emp_pack AS
+   
+    PROCEDURE Cal_sum(
+        p_deptname IN VARCHAR2,
+        p_salary_sum OUT NUMBER
+    ) IS
+    BEGIN
+        SELECT SUM(sal)
+        INTO p_salary_sum
+        FROM emp
+        WHERE deptno = p_deptname;
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            p_salary_sum := 0; -- Department not found or no employees
+    END Cal_sum;
+
+    FUNCTION GetEmp_proj(
+        p_prj_name IN VARCHAR2
+    ) RETURN NUMBER IS
+        v_employee_count NUMBER;
+    BEGIN
+        SELECT COUNT(*)
+        INTO v_employee_count
+        FROM proj
+        WHERE prj_name = p_prj_name;
+        RETURN v_employee_count;
+    END GetEmp_proj;
+END Emp_pack;
+/
+
+
+SET SERVEROUTPUT ON
+DECLARE
+    p_salary_sum NUMBER;
+    v_employee_count NUMBER;
+    project_employees NUMBER;
+BEGIN
+   
+    Emp_pack.Cal_sum('&p_deptname', p_salary_sum);
+    DBMS_OUTPUT.PUT_LINE('Total Salary in ' || '&p_deptname' || ' department: ' || p_salary_sum);
+
+    project_employees := Emp_pack.GetEmp_proj('&v_employee_count');
+    DBMS_OUTPUT.PUT_LINE('Number of Employees in ' || '&v_employee_count' || ': ' || project_employees);
+END;
+/
+
+
+
+
+
+Enter value for p_deptname: D2
+old   7:     Emp_pack.Cal_sum('&p_deptname', p_salary_sum);
+new   7:     Emp_pack.Cal_sum('D2', p_salary_sum);
+Enter value for p_deptname: D2
+old   8:     DBMS_OUTPUT.PUT_LINE('Total Salary in ' || '&p_deptname' || ' department: ' || p_salary_sum);
+new   8:     DBMS_OUTPUT.PUT_LINE('Total Salary in ' || 'D2' || ' department: ' || p_salary_sum);
+Enter value for v_employee_count: project_A
+old  11:     project_employees := Emp_pack.GetEmp_proj('&v_employee_count');
+new  11:     project_employees := Emp_pack.GetEmp_proj('project_A');
+Enter value for v_employee_count: project_A
+old  12:     DBMS_OUTPUT.PUT_LINE('Number of Employees in ' || '&v_employee_count' || ': ' || project_employees);
+new  12:     DBMS_OUTPUT.PUT_LINE('Number of Employees in ' || 'project_A' || ': ' || project_employees);
+Total Salary in D2 department: 268000
+Number of Employees in project_A: 2

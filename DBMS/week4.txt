@@ -1,0 +1,291 @@
+SQL> select*from dept;
+
+DNO DNAME      LOCATION  DEPT_BUDGET
+--- ---------- --------- -----------
+D1  Marketing  CHN            500000
+D2  Research   MNG            300000
+D3  IT         BNG            400000
+D4  HR         BNG            200000
+D5  Accounts   BNG            500000
+    Corporate  HYD            700000
+D6  Management MNG            300000
+D7  Asset      BNG            400000
+
+8 rows selected.
+
+SQL> select*from emp;
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       101 Ravi       MGR                  10-OCT-85      32000
+D1                             02-OCT-01 P1
+
+       102 Raviraj    CLRK             106 10-DEC-80      24000
+D1                             12-NOV-00 P3
+
+       111 Raghu      GM               150 10-DEC-74      45000      15000
+                               03-DEC-85
+
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       150            CEO                  10-DEC-70      60000      30000
+                               03-DEC-90
+
+       105            CLRK                 02-OCT-80
+D1                             02-OCT-02 P3
+
+       125 Manu       A.MGR            150 10-DEC-80
+D4                             02-OCT-02 P2
+
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       106 PRASHANT   MGR              111 02-OCT-86
+D2                             02-OCT-87
+
+       123 Mahesh     MGR              111 10-DEC-74      35000
+D3                             02-OCT-02 P2
+
+       108 Kamesh     CLRK             108 10-DEC-70
+D1                             02-OCT-85
+
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       133 Ankur      CLRK             102 10-DEC-80
+D1                             02-OCT-01 P3
+
+       199 Anuj       CLRK             101 10-DEC-80      28000
+D5                             10-DEC-81
+
+
+11 rows selected.
+
+SQL> select*from proj;
+
+DNO PRJ_N PRJ_NAME             PRJ_CREDIT STRT_DATE END_DATE    PRJ_FUND
+--- ----- -------------------- ---------- --------- --------- ----------
+D1  P1    Project_A                     4 21-OCT-22 28-SEP-23     400000
+D2  P1    Project_B                     2 29-AUG-23 29-SEP-23     200000
+D3  P2    Project_C                     3 30-AUG-23 30-SEP-23     300000
+D1  P3    Project_D                     5 01-SEP-23 01-OCT-23     500000
+D4  P2    Project_E                     7 02-SEP-23 02-OCT-23     700000
+D7  P2    Project_F                     7 03-SEP-23 03-OCT-23     800000
+D2  P3    Project_F                     7 03-SEP-23 03-OCT-23     800000
+
+7 rows selected.
+
+SQL> select * from EMP where sal>25000 or deptno='D1';
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       101 Ravi       MGR                  10-OCT-85      32000
+D1                             02-OCT-01 P1
+
+       102 Raviraj    CLRK             106 10-DEC-80      24000
+D1                             12-NOV-00 P3
+
+       111 Raghu      GM               150 10-DEC-74      45000      15000
+                               03-DEC-85
+
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       150            CEO                  10-DEC-70      60000      30000
+                               03-DEC-90
+
+       105            CLRK                 02-OCT-80
+D1                             02-OCT-02 P3
+
+       123 Mahesh     MGR              111 10-DEC-74      35000
+D3                             02-OCT-02 P2
+
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       108 Kamesh     CLRK             108 10-DEC-70
+D1                             02-OCT-85
+
+       133 Ankur      CLRK             102 10-DEC-80
+D1                             02-OCT-01 P3
+
+       199 Anuj       CLRK             101 10-DEC-80      28000
+D5                             10-DEC-81
+
+
+9 rows selected.
+
+SQL> select ename as Employee_Name,sal as SALARY from emp where sal between 25200 and 35200;
+
+EMPLOYEE_N     SALARY
+---------- ----------
+Ravi            32000
+Mahesh          35000
+Anuj            28000
+
+SQL> select ename,location from emp,dept where deptno=dno and location in('BNG','MUB','HYD');
+
+ENAME      LOCATION
+---------- ---------
+Manu       BNG
+Mahesh     BNG
+Anuj       BNG
+
+SQL> select ename,location from emp,dept where deptno=dno and (location='BNG' or location='MUB' or location='HYD');
+
+ENAME      LOCATION
+---------- ---------
+Manu       BNG
+Mahesh     BNG
+Anuj       BNG
+
+SQL> select distinct deptno from EMP;
+
+DEPTNO
+------------------------------
+D1
+D4
+D3
+
+D2
+D5
+
+6 rows selected.
+
+SQL> select * from emp order by deptno,sal desc;
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       133 Ankur      CLRK             102 10-DEC-80
+D1                             02-OCT-01 P3
+
+       108 Kamesh     CLRK             108 10-DEC-70
+D1                             02-OCT-85
+
+       105            CLRK                 02-OCT-80
+D1                             02-OCT-02 P3
+
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       101 Ravi       MGR                  10-OCT-85      32000
+D1                             02-OCT-01 P1
+
+       102 Raviraj    CLRK             106 10-DEC-80      24000
+D1                             12-NOV-00 P3
+
+       106 PRASHANT   MGR              111 02-OCT-86
+D2                             02-OCT-87
+
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       123 Mahesh     MGR              111 10-DEC-74      35000
+D3                             02-OCT-02 P2
+
+       125 Manu       A.MGR            150 10-DEC-80
+D4                             02-OCT-02 P2
+
+       199 Anuj       CLRK             101 10-DEC-80      28000
+D5                             10-DEC-81
+
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       150            CEO                  10-DEC-70      60000      30000
+                               03-DEC-90
+
+       111 Raghu      GM               150 10-DEC-74      45000      15000
+                               03-DEC-85
+
+
+11 rows selected.
+
+SQL> create table Manager as select empno,ename,job,deptno,sal from emp;
+
+Table created.
+
+SQL> select prj_no,Prj_Name from proj where dno='D2' and prj_credit>5;
+
+PRJ_N PRJ_NAME
+----- --------------------
+P3    Project_F
+
+SQL> select ename from EMP where mgrid=111;
+
+ENAME
+----------
+PRASHANT
+Mahesh
+
+SQL> select ename from EMP where ename like 'M_____' or ename like 'R_____';
+
+ENAME
+----------
+Mahesh
+
+SQL> select ename from EMP where ename not like 'S%';
+
+ENAME
+----------
+Ravi
+Raviraj
+Raghu
+Manu
+PRASHANT
+Mahesh
+Kamesh
+Ankur
+Anuj
+
+9 rows selected.
+
+SQL> select distinct ename from EMP where ename like '_av%j';
+
+ENAME
+----------
+Raviraj
+
+SQL> select ename from emp where comm is null;
+
+ENAME
+----------
+Ravi
+Raviraj
+
+Manu
+PRASHANT
+Mahesh
+Kamesh
+Ankur
+Anuj
+
+9 rows selected.
+
+SQL> commit;
+
+Commit complete.

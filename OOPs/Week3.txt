@@ -1,0 +1,304 @@
+// program to compute cube of a number using inline function
+// Author :Kameshwar
+//Reg no: 230970055
+// Date 24/08/2023
+
+#include<iostream>
+using namespace std;
+
+inline long int cube(long int num)
+{
+        return num*num*num;
+}
+
+int main()
+{
+        long int num;
+        cout<<"\nEnter a number";
+        cin>>num;
+        long int result = cube(num);
+        cout<<"\nCube of "<<num<<" is :"<<result<<endl;
+        cout<<"\n";
+        return 0;
+}
+
+
+output:
+
+Enter a number: 3
+
+Cube of 3 is :27
+
+Enter a number: 16
+
+Cube of 16 is :4096
+
+Enter a number: 0
+
+Cube of 0 is :0
+
+
+
+//Write a function to determine if the given string is a palindrome or not.
+//Author :Kameshwar
+//Reg no: 230970055
+//Date:24/08/2023
+
+
+#include<iostream>
+#include<cstring>
+using namespace std;
+bool isPalindrome(const char *str)
+{
+        int length = strlen(str);
+        for(int i=0;i<length/2;i++)
+        {
+                if(str[i]!=str[length-1-i])
+                {
+                        return false;
+                }
+        }
+        return true;
+}
+
+int main()
+{
+        char input[100];
+        cout<<"\nEnter a string";
+        cin>>input;
+        if(isPalindrome(input))
+        {
+                cout<<"\nThe string is Palindrome"<<endl;
+	 }
+        else
+        {
+                cout<<"\nThe string is not a palindrome"<<endl;
+        }
+        return 0;
+}
+
+
+output:
+
+Enter a string: stats
+
+The string is Palindrome
+
+Enter a string: Ankur
+
+The string is not a palindrome
+
+
+
+//program  for swapping two integers, floats, and characters using function-overloading.
+//Author : Kameshwar
+//Reg no: 230970055
+//Date :24/08/2023
+
+
+#include<iostream>
+using namespace std;
+
+void Swap(int &a,int &b)
+{
+        int temp=a;
+        a=b;
+        b=temp;
+}
+
+void Swap(float &a,float &b)
+{
+        float temp=a;
+        a=b;
+        b=temp;
+}
+
+void Swap(char &a,char &b)
+{
+        char temp=a;
+        a=b;
+        b=temp;
+}
+
+int main()
+{
+        int int1,int2;
+        float float1,float2;
+        char char1,char2;
+        cout<<"\nEnter two integers"<<endl;
+        cin>>int1>>int2;
+        Swap(int1,int2);
+        cout<<"\nSwapped integers "<<int1<<" and "<<int2<<endl;
+
+        cout<<"\nEnter two float values"<<endl;
+        cin>>float1>>float2;
+        Swap(float1,float2);
+        cout<<"\nSwapped float values "<<float1<<" and "<<float2<<endl;
+
+        cout<<"\nEnter two characters"<<endl;
+        cin>>char1>>char2;
+        Swap(char1,char2);
+        cout<<"\nSwapped character values "<<char1<<" and "<<char2<<endl;
+        return 0;
+}
+
+
+output:
+
+Enter two integers:
+89
+15
+
+Swapped integers 15 and 89
+
+Enter two float values
+45.2
+6.3
+
+Swapped float values 6.3 and 45.2
+
+Enter two characters
+a
+k
+
+Swapped character values k and a
+
+
+
+
+//C++ program that computes the inverse of an integer and the double of the inverse
+//Author:Kameshwar
+//Reg no: 230970055
+//Date:24/08/2023
+
+
+#include<iostream>
+using namespace std;
+
+int calculateinverse(int num)
+{
+        int inverse=0;
+        while(num>0)
+        {
+                inverse=(inverse*10)+(num%10);
+                num/=10;
+        }
+        return inverse;
+}
+
+int calculateDouble(int num)
+{
+        return num*num;
+}
+
+int main()
+{
+        int input;
+        cout<<"\nEnter an integer";
+        cin>>input;
+	 int inverse = calculateinverse(input);
+        int doubleinverse = calculateDouble(inverse);
+        cout<<"\nInverse of :" <<input<<" is: "<<inverse;
+        cout<<"\nDouble of: " <<inverse<<" is: "<<doubleinverse<<endl;
+        cout<<"\n";
+        return 0;
+}
+
+
+Enter an integer: 74
+
+Inverse of: 74 is: 47
+Double of: 47 is: 2209
+
+Enter an integer: 69
+
+Inverse of: 69 is: 96
+Double of: 96 is: 9216
+
+
+
+//Program for Structure and EMP
+//Name; kameshwar shukla
+//Reg no: 230970055
+//Date: 25-08-2023
+
+
+
+#include <iostream>
+using namespace std;
+
+struct Employee {
+    int Employee_Number;
+    string Employee_Name;
+    double Basic;
+    double DA;
+    double IT;
+    double Net_Sal;
+};
+
+void calculateSalary(Employee &emp) {
+    emp.DA = 0.12 * emp.Basic;
+    double grossSalary = emp.Basic + emp.DA;
+    emp.IT = 0.18 * grossSalary;
+    emp.Net_Sal = grossSalary - emp.IT;
+}
+
+int main() {
+    int N;
+
+    cout << "Enter the number of employees: ";
+    cin >> N;
+
+    Employee employees[N];
+
+    for (int i = 0; i < N; ++i) {
+        cout << "Enter details for Employee " << i + 1 << ":\n";
+        employees[i].Employee_Number = i + 1;
+        cout << "Employee Name: ";
+        cin >> employees[i].Employee_Name;
+        cout << "Basic Salary: ";
+        cin >> employees[i].Basic;
+
+        calculateSalary(employees[i]);
+    }
+
+    cout << "\nEmployee Details and Net Salaries:\n";
+    for (int i = 0; i < N; ++i) {
+        cout << "Employee Number: " << employees[i].Employee_Number << endl;
+        cout << "Employee Name: " << employees[i].Employee_Name << endl;
+        cout << "Basic Salary: " << employees[i].Basic << endl;
+        cout << "DA: " << employees[i].DA << endl;
+        cout << "IT: " << employees[i].IT << endl;
+        cout << "Net Salary: " << employees[i].Net_Sal << endl;
+        cout << "---------------------------\n";
+    }
+
+    return 0;
+}
+
+output:
+
+Enter the number of employees: 2
+Enter details for Employee 1:
+Employee Name: ankur
+Basic Salary: 8900
+Enter details for Employee 2:
+Employee Name: ramesh
+Basic Salary: 4500
+
+Employee Details and Net Salaries:
+Employee Number: 1
+Employee Name: ankur
+Basic Salary: 8900
+DA: 1068
+IT: 1794.24
+Net Salary: 8173.76
+---------------------------
+Employee Number: 2
+Employee Name: ramesh
+Basic Salary: 4500
+DA: 540
+IT: 907.2
+Net Salary: 4132.8
+---------------------------
+

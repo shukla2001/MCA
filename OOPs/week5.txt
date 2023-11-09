@@ -1,0 +1,236 @@
+#include <iostream>
+#include <vector>
+
+class Matrix {
+private:
+    std::vector<std::vector<int>> data;
+    int rows;
+    int cols;
+
+public:
+    Matrix(int r, int c) : rows(r), cols(c) {
+        data.resize(rows, std::vector<int>(cols, 0));
+    }
+
+    void setData() {
+        std::cout << "Enter matrix elements row by row:" << std::endl;
+        for (int i = 0; i < rows; ++i) {
+            for (int j = 0; j < cols; ++j) {
+                std::cin >> data[i][j];
+            }
+        }
+    }
+
+    void display() {
+        for (int i = 0; i < rows; ++i) {
+            for (int j = 0; j < cols; ++j) {
+                std::cout << data[i][j] << " ";
+            }
+            std::cout << std::endl;
+        }
+    }
+
+    Matrix operator+(const Matrix& other) {
+        if (rows != other.rows || cols != other.cols) {
+            std::cout << "Matrix addition is not possible due to incompatible sizes." << std::endl;
+            return *this; // Returning the original matrix
+        }
+
+        Matrix result(rows, cols);
+
+        for (int i = 0; i < rows; ++i) {
+            for (int j = 0; j < cols; ++j) {
+                result.data[i][j] = data[i][j] + other.data[i][j];
+            }
+        }
+
+        return result;
+    }
+
+    Matrix operator-(const Matrix& other) {
+        if (rows != other.rows || cols != other.cols) {
+            std::cout << "Matrix subtraction is not possible due to incompatible sizes." << std::endl;
+            return *this; // Returning the original matrix
+        }
+
+        Matrix result(rows, cols);
+
+        for (int i = 0; i < rows; ++i) {
+            for (int j = 0; j < cols; ++j) {
+                result.data[i][j] = data[i][j] - other.data[i][j];
+            }
+        }
+
+        return result;
+    }
+
+    bool operator==(const Matrix& other) const {
+        return (rows == other.rows && cols == other.cols);
+    }
+};
+
+int main() {
+    int r1, c1, r2, c2;
+    std::cout << "Enter the dimensions of the first matrix (rows columns): ";
+    std::cin >> r1 >> c1;
+
+    std::cout << "Enter the dimensions of the second matrix (rows columns): ";
+    std::cin >> r2 >> c2;
+
+    if (r1 != r2 || c1 != c2) {
+        std::cout << "Matrix addition and subtraction are not possible due to incompatible sizes." << std::endl;
+        return 1;
+    }
+
+    Matrix m1(r1, c1), m2(r2, c2), m3(r1, c1), m4(r1, c1);
+
+    std::cout << "Enter elements for the first matrix:" << std::endl;
+    m1.setData();
+
+    std::cout << "Enter elements for the second matrix:" << std::endl;
+    m2.setData();
+
+    if (m1 == m2) {
+        m3 = m1 + m2;
+        m4 = m1 - m2;
+
+        std::cout << "Matrix 1:" << std::endl;
+        m1.display();
+
+        std::cout << "Matrix 2:" << std::endl;
+        m2.display();
+
+        std::cout << "Matrix 1 + Matrix 2:" << std::endl;
+        m3.display();
+
+        std::cout << "Matrix 1 - Matrix 2:" << std::endl;
+        m4.display();
+    } else {
+        std::cout << "Matrix addition and subtraction are not possible due to incompatible sizes." << std::endl;
+    }
+
+    return 0;
+}
+
+
+
+
+
+
+perfect cube:
+
+#include <iostream>
+#include <cmath>
+
+int main() {
+    long long int num; // Use long long to handle large numbers
+    std::cout << "Enter a number to check if it's a perfect cube: ";
+    std::cin >> num;
+
+    // Handle negative numbers
+    bool isNegative = num < 0;
+    num = isNegative ? -num : num;
+
+    double cubeRoot = cbrt(static_cast<double>(num));
+
+    // Check if the cube root is an integer
+    bool isPerfectCube = std::abs(cubeRoot - round(cubeRoot)) < 1e-9;
+
+    if (isPerfectCube) {
+        std::cout << num << " is a perfect cube, and its cube root is " << static_cast<long long>(cubeRoot) << "." << std::endl;
+    } else {
+        std::cout << num << " is not a perfect cube." << std::endl;
+    }
+
+    return 0;
+}
+
+
+
+
+
+//Program in C++ creaing a class called Datei
+//Author : kameshwar shukla
+//Reg no: 230970055
+//Date: 13-09-2023
+
+#include <iostream>
+#include <limits>
+
+class Date {
+private:
+    int day;
+    int month;
+    int year;
+
+    bool isLeapYear(int y) const {
+        return (y % 4 == 0 && y % 100 != 0) || (y % 400 == 0);
+    }
+
+public:
+    Date(int d, int m, int y) : day(d), month(m), year(y) {}
+
+    Date& operator++() {
+        day++;
+
+
+        if (month == 2) {
+            if ((isLeapYear(year) && day > 29) || (!isLeapYear(year) && day > 28)) {
+                day = 1;
+                month++;
+            }
+        }
+
+        else if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30) {
+            day = 1;
+            month++;
+        }
+
+        else if (day > 31) {
+            day = 1;
+            month++;
+        }
+
+
+        if (month > 12) {
+            month = 1;
+            year++;
+        }
+
+        return *this;
+    }
+
+    void display() const {
+        std::cout << day << "/" << month << "/" << year << std::endl;
+    }
+};
+
+int main() {
+    int day, month, year;
+
+    do {
+        std::cout << "Enter a positive date (day month year): ";
+        if (!(std::cin >> day >> month >> year) || day <= 0 || month <= 0 || year <= 0) {
+            std::cerr << "Invalid input. Please enter positive integers." << std::endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
+    } while (day <= 0 || month <= 0 || year <= 0);
+
+    Date date(day, month, year);
+
+    ++date;
+
+    std::cout << "Date after incrementing by one day: ";
+    date.display();
+
+    return 0;
+}
+
+
+
+
+
+
+
+

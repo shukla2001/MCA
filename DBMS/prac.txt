@@ -1,0 +1,10 @@
+set serveroutput on;
+declare
+a number(7,2) := &a;
+b number(7,2) := &b;
+c number(7,2);
+begin
+c := a+b;
+dbms_output.put_line(c);
+end;
+/

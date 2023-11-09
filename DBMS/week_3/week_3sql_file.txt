@@ -1,0 +1,18 @@
+INSERT into dept values('D1','Marketing','CHN',500000);
+INSERT into dept values('D2','Research','MNG',300000);
+INSERT into dept values('D3','IT','BNG',400000);
+INSERT into dept values('D4','HR','BGG',200000);
+INSERT into dept values('D5','Accounts','BNG',500000);
+INSERT into dept values(NULL,'Corporate','HYD',700000);
+INSERT into dept values('D7','IIT','BNG',800000);
+INSERT into dept values('D8','IIIT','BNG',700000);
+
+
+
+Insert into proj values('D1','P1','Prj_1',4,TO_DATE('28-08-2023','DD-MM-YYYY'),TO_DATE('28-09-2023','DD-MM-YYYY'),400000);
+Insert into proj values('D2','P1','Prj_2',2,TO_DATE('29-08-2023','DD-MM-YYYY'),TO_DATE('29-09-2023','DD-MM-YYYY'),200000);
+Insert into proj values('D3','P2','Prj_3',3,TO_DATE('30-08-2023','DD-MM-YYYY'),TO_DATE('30-09-2023','DD-MM-YYYY'),300000);
+Insert into proj values('D1','P3','Prj_4',5,TO_DATE('01-09-2023','DD-MM-YYYY'),TO_DATE('01-10-2023','DD-MM-YYYY'),500000);
+Insert into proj values('D4','P2','Prj_5',7,TO_DATE('02-09-2023','DD-MM-YYYY'),TO_DATE('02-10-2023','DD-MM-YYYY'),700000);
+Insert into proj values('D7','P2','Prj_6',7,TO_DATE('03-09-2023','DD-MM-YYYY'),TO_DATE('03-10-2023','DD-MM-YYYY'),800000);
+Insert into proj values('D8','P2','Prj_7',7,TO_DATE('04-09-2023','DD-MM-YYYY'),TO_DATE('04-10-2023','DD-MM-YYYY'),700000);

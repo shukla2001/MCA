@@ -1,0 +1,354 @@
+SQL> select min(sal) as min_sal,max(sal) as max_sal,avg(sal) as avg_sal,sum(sal) as total from EMP;
+
+   MIN_SAL    MAX_SAL    AVG_SAL      TOTAL
+---------- ---------- ---------- ----------
+     24000      60000 37333.3333     224000
+
+SQL> select prj_name from proj natural join deptt where dname='Marketing';
+select prj_name from proj natural join deptt where dname='Marketing'
+                                       *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> select prj_name from proj natural join dept where dname='Marketing';;
+select prj_name from proj natural join dept where dname='Marketing';
+                                                                   *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> select prj_name from proj natural join dept where dname='Marketing';
+
+PRJ_NAME
+--------------------
+Project_A
+Project_D
+
+SQL> select ename as UpperCase;
+select ename as UpperCase
+                        *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> select ename as UpperCase from emp;
+
+UPPERCASE
+----------
+Ravi
+Raviraj
+Raghu
+
+
+Manu
+PRASHANT
+Mahesh
+Kamesh
+Ankur
+Anuj
+
+11 rows selected.
+
+SQL> select ename as lowerCase from emp;
+
+LOWERCASE
+----------
+Ravi
+Raviraj
+Raghu
+
+
+Manu
+PRASHANT
+Mahesh
+Kamesh
+Ankur
+Anuj
+
+11 rows selected.
+
+SQL> select upper(ename) as UpperCase from emp;
+
+UPPERCASE
+----------
+RAVI
+RAVIRAJ
+RAGHU
+
+
+MANU
+PRASHANT
+MAHESH
+KAMESH
+ANKUR
+ANUJ
+
+11 rows selected.
+
+SQL> select Lower(ename) as UpperCase from emp;
+
+UPPERCASE
+----------
+ravi
+raviraj
+raghu
+
+
+manu
+prashant
+mahesh
+kamesh
+ankur
+anuj
+
+11 rows selected.
+
+SQL> select initcap(ename) as InitCap from emp;
+
+INITCAP
+----------
+Ravi
+Raviraj
+Raghu
+
+
+Manu
+Prashant
+Mahesh
+Kamesh
+Ankur
+Anuj
+
+11 rows selected.
+
+SQL> select substr(ename,2,3) as substr from emp;
+
+SUBSTR
+------------
+avi
+avi
+agh
+
+
+anu
+RAS
+ahe
+ame
+nku
+nuj
+
+11 rows selected.
+
+SQL> select  length(ename) as Length from emp;
+
+    LENGTH
+----------
+         4
+         7
+         5
+
+
+         4
+         8
+         6
+         6
+         5
+         4
+
+11 rows selected.
+
+SQL> select ename from emp;
+
+ENAME
+----------
+Ravi
+Raviraj
+Raghu
+
+
+Manu
+PRASHANT
+Mahesh
+Kamesh
+Ankur
+Anuj
+
+11 rows selected.
+
+SQL> select upper(ename) as UpperCase,
+  2          lower(ename) as LowerCase,
+  3          initcap(ename) as InitCap,
+  4          substr(ename,2,3) as substr,
+  5          length(ename) as Length from emp;
+
+UPPERCASE  LOWERCASE  INITCAP    SUBSTR           LENGTH
+---------- ---------- ---------- ------------ ----------
+RAVI       ravi       Ravi       avi                   4
+RAVIRAJ    raviraj    Raviraj    avi                   7
+RAGHU      raghu      Raghu      agh                   5
+
+
+MANU       manu       Manu       anu                   4
+PRASHANT   prashant   Prashant   RAS                   8
+MAHESH     mahesh     Mahesh     ahe                   6
+KAMESH     kamesh     Kamesh     ame                   6
+ANKUR      ankur      Ankur      nku                   5
+ANUJ       anuj       Anuj       nuj                   4
+
+11 rows selected.
+
+SQL> select ename from emp where mgrid in(select empno from emp where ename='Raghu');
+
+ENAME
+----------
+Mahesh
+PRASHANT
+
+SQL> select dname,max(sal),min(sal) from emp e,dept d where e.deptno=d.dno group by dname;
+
+DNAME        MAX(SAL)   MIN(SAL)
+---------- ---------- ----------
+Accounts        28000      28000
+Marketing       32000      24000
+HR
+Research
+IT              35000      35000
+
+SQL> select dname,count(EmpNo) from emp e,dept d where e.deptno=d.dno group by dname;
+
+DNAME      COUNT(EMPNO)
+---------- ------------
+Accounts              1
+Marketing             5
+HR                    1
+Research              1
+IT                    1
+
+SQL> select ename,extract(year from current_date)-extract(year from Date_Join) as experience from emp where extract(year from current_date)-extract(year from Date_Join)>5;
+
+ENAME      EXPERIENCE
+---------- ----------
+Ravi               22
+Raviraj            23
+Raghu              38
+                   33
+                   21
+Manu               21
+PRASHANT           36
+Mahesh             21
+Kamesh             38
+Ankur              22
+Anuj               42
+
+11 rows selected.
+
+SQL> select ename from emp where extract(month from Date_Join)=12;
+
+ENAME
+----------
+Raghu
+
+Anuj
+
+SQL> select ename,Date_Birth from emp where extract(year from Date_Birth)=2000;
+
+no rows selected
+
+SQL> commit;
+
+Commit complete.
+
+
+
+
+
+
+5.10:
+SQL> select ename,to_char(date_birth,'dd-mm-yy') as DOB from emp;
+
+ENAME      DOB
+---------- --------
+Ravi       10-10-85
+Raviraj    10-12-80
+Raghu      10-12-74
+           10-12-70
+           02-10-80
+Manu       10-12-80
+PRASHANT   02-10-86
+Mahesh     10-12-74
+Kamesh     10-12-70
+Ankur      10-12-80
+Anuj       10-12-80
+
+11 rows selected.
+
+
+5.11:
+
+SQL> select trunc(2.83) from dual;
+
+TRUNC(2.83)
+-----------
+          2
+
+SQL> select round(2.83) from dual;
+
+ROUND(2.83)
+-----------
+          3
+
+SQL> select ceil(2.83) from dual;
+
+CEIL(2.83)
+----------
+         3
+
+SQL> select floor(2.83) from dual;
+
+FLOOR(2.83)
+-----------
+          2
+
+
+3.12:
+
+SQL> Update proj set prj_name='Project_K' where Dno='D2' and prj_no='P3';
+
+SQL> select prj_name,extract(year from end_date)-extract(year from strt_date) as experience from proj where extract(year from end_date)-extract(year from strt_date)>1;
+
+PRJ_NAME             EXPERIENCE
+-------------------- ----------
+Project_A                     2
+Project_E                     7
+Project_F                     5
+Project_F                     5
+
+
+SQL> Update proj set prj_name='Project_K' where Dno='D2' and prj_no='P3';
+
+1 row updated.
+
+SQL> select * from proj;
+
+DNO PRJ_N PRJ_NAME             PRJ_CREDIT STRT_DATE END_DATE    PRJ_FUND
+--- ----- -------------------- ---------- --------- --------- ----------
+D1  P1    Project_A                     4 10-OCT-21 28-SEP-23     400000
+D2  P1    Project_B                     2 29-AUG-23 29-SEP-23     200000
+D3  P2    Project_C                     3 30-AUG-23 30-SEP-23     300000
+D1  P3    Project_D                     5 01-SEP-23 01-OCT-23     500000
+D4  P2    Project_E                     7 10-OCT-16 02-OCT-23     700000
+D7  P2    Project_F                     7 10-OCT-18 03-OCT-23     800000
+D2  P3    Project_K                     7 10-OCT-18 03-OCT-23     800000
+
+
+3.13:
+
+SQL> UPDATE EMP
+  2  SET COMM = COMM + (SAL * 10/100);
+
+11 rows updated.
+
+SQL> commit;
+
+Commit complete.

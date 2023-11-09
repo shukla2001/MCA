@@ -1,0 +1,682 @@
+SQL> select*from proj;
+
+DNO PRJ_N PRJ_NAME             PRJ_CREDIT STRT_DATE END_DATE    PRJ_FUND
+--- ----- -------------------- ---------- --------- --------- ----------
+D1  P1    Project_A                     4 21-OCT-22 28-SEP-23     400000
+D2  P1    Project_B                     2 29-AUG-23 29-SEP-23     200000
+D3  P2    Project_C                     3 30-AUG-23 30-SEP-23     300000
+D1  P3    Project_D                     5 01-SEP-23 01-OCT-23     500000
+D4  P2    Project_E                     7 02-SEP-23 02-OCT-23     700000
+D7  P2    Project_F                     7 03-SEP-23 03-OCT-23     800000
+D2  P3    Project_F                     7 03-SEP-23 03-OCT-23     800000
+
+7 rows selected.
+
+SQL> select*from dept;
+
+DNO DNAME      LOCATION  DEPT_BUDGET
+--- ---------- --------- -----------
+D1  Marketing  CHN            500000
+D2  Research   MNG            300000
+D3  IT         BNG            400000
+D4  HR         BNG            200000
+D5  Accounts   BNG            500000
+    Corporate  HYD            700000
+D6  Management MNG            300000
+D7  Asset      BNG            400000
+
+8 rows selected.
+
+SQL> Update EMP set MGRID=111 where EMPNo=200;
+
+0 rows updated.
+
+SQL> Update EMP set MGRID=106 where EMPNo=102;
+
+1 row updated.
+
+SQL> Update EMP set MGRID=150 where EMPNo=111;
+
+1 row updated.
+
+SQL>
+SQL> Update EMP set MGRID=111 where EMPNo=133;
+
+1 row updated.
+
+SQL> Update EMP set MGRID=111 where EMPNo=103;
+
+0 rows updated.
+
+SQL> Update EMP set MGRID=150 where EMPNo=125;
+
+1 row updated.
+
+SQL> Update EMP set MGRID=125 where EMPNo=104;
+
+0 rows updated.
+
+SQL> Update EMP set MGRID=111 where EMPNo=106;
+
+1 row updated.
+
+SQL> Update EMP set MGRID=150 where EMPNo=123;
+
+1 row updated.
+
+SQL> Update EMP set MGRID=106 where EMPNo=108;
+
+1 row updated.
+
+SQL> Update EMP set MGRID=111 where EMPNo=109;
+
+0 rows updated.
+
+SQL> Update EMP set MGRID=106 where EMPNo=201;
+
+0 rows updated.
+
+SQL> select*from emp;
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       101 Ravi       MGR                  10-OCT-85      32000
+D1                             02-OCT-01 P1
+
+       102 Raviraj    CLRK             106 10-DEC-80      24000
+D1                             12-NOV-00 P3
+
+       111 Raghu      GM               150 10-DEC-74      45000      15000
+                               03-DEC-85
+
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       150            CEO                  10-DEC-70      60000      30000
+                               03-DEC-90
+
+       105            CLRK                 02-OCT-80
+D1                             02-OCT-02 P3
+
+       125 Manu       A.MGR            150 10-DEC-80
+D4                             02-OCT-02 P2
+
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       106 PRASHANT   MGR              111 02-OCT-86
+D2                             02-OCT-87
+
+       123 Mahesh     CLRK             150 10-DEC-74      25000
+D3                             02-OCT-02 P2
+
+       108 Kamesh     CLRK             106 10-DEC-70
+D1                             02-OCT-85
+
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       133 Ankur      CLRK             111 10-DEC-80
+D1                             02-OCT-01 P3
+
+       199 Anuj       CLRK                 10-DEC-80      28000
+D5                             10-DEC-81
+
+
+11 rows selected.
+
+SQL> Update EMP set MGRID=106 where EMPNo=108;
+
+1 row updated.
+
+SQL> Update EMP set MGRID=106 where EMPNo=133;
+
+1 row updated.
+
+SQL> Update EMP set MGRID=106 where EMPNo=199;
+
+1 row updated.
+
+SQL> select*from emp;
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       101 Ravi       MGR                  10-OCT-85      32000
+D1                             02-OCT-01 P1
+
+       102 Raviraj    CLRK             106 10-DEC-80      24000
+D1                             12-NOV-00 P3
+
+       111 Raghu      GM               150 10-DEC-74      45000      15000
+                               03-DEC-85
+
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       150            CEO                  10-DEC-70      60000      30000
+                               03-DEC-90
+
+       105            CLRK                 02-OCT-80
+D1                             02-OCT-02 P3
+
+       125 Manu       A.MGR            150 10-DEC-80
+D4                             02-OCT-02 P2
+
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       106 PRASHANT   MGR              111 02-OCT-86
+D2                             02-OCT-87
+
+       123 Mahesh     CLRK             150 10-DEC-74      25000
+D3                             02-OCT-02 P2
+
+       108 Kamesh     CLRK             106 10-DEC-70
+D1                             02-OCT-85
+
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       133 Ankur      CLRK             106 10-DEC-80
+D1                             02-OCT-01 P3
+
+       199 Anuj       CLRK             106 10-DEC-80      28000
+D5                             10-DEC-81
+
+
+11 rows selected.
+
+SQL> Update EMP set MGRID=178 where EMPNo=199;
+Update EMP set MGRID=178 where EMPNo=199
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (MCA158.MGR_FK_EMPNO_CONS) violated - parent
+key not found
+
+
+SQL> Update EMP set MGRID=101 where EMPNo=199;
+
+1 row updated.
+
+SQL> Update EMP set MGRID=102 where EMPNo=133;
+
+1 row updated.
+
+SQL> Update EMP set MGRID=108 where EMPNo=108;
+
+1 row updated.
+
+SQL> commit
+  2
+SQL> commit;
+
+Commit complete.
+
+SQL> delete from EMP where prj_id='P3';
+
+3 rows deleted.
+
+SQL> select*from emp;
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       101 Ravi       MGR                  10-OCT-85      32000
+D1                             02-OCT-01 P1
+
+       111 Raghu      GM               150 10-DEC-74      45000      15000
+                               03-DEC-85
+
+       150            CEO                  10-DEC-70      60000      30000
+                               03-DEC-90
+
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       125 Manu       A.MGR            150 10-DEC-80
+D4                             02-OCT-02 P2
+
+       106 PRASHANT   MGR              111 02-OCT-86
+D2                             02-OCT-87
+
+       123 Mahesh     CLRK             150 10-DEC-74      25000
+D3                             02-OCT-02 P2
+
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       108 Kamesh     CLRK             108 10-DEC-70
+D1                             02-OCT-85
+
+       199 Anuj       CLRK             101 10-DEC-80      28000
+D5                             10-DEC-81
+
+
+8 rows selected.
+
+SQL> rollback;
+
+Rollback complete.
+
+SQL> select*from emp;
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       101 Ravi       MGR                  10-OCT-85      32000
+D1                             02-OCT-01 P1
+
+       102 Raviraj    CLRK             106 10-DEC-80      24000
+D1                             12-NOV-00 P3
+
+       111 Raghu      GM               150 10-DEC-74      45000      15000
+                               03-DEC-85
+
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       150            CEO                  10-DEC-70      60000      30000
+                               03-DEC-90
+
+       105            CLRK                 02-OCT-80
+D1                             02-OCT-02 P3
+
+       125 Manu       A.MGR            150 10-DEC-80
+D4                             02-OCT-02 P2
+
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       106 PRASHANT   MGR              111 02-OCT-86
+D2                             02-OCT-87
+
+       123 Mahesh     CLRK             150 10-DEC-74      25000
+D3                             02-OCT-02 P2
+
+       108 Kamesh     CLRK             108 10-DEC-70
+D1                             02-OCT-85
+
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       133 Ankur      CLRK             102 10-DEC-80
+D1                             02-OCT-01 P3
+
+       199 Anuj       CLRK             101 10-DEC-80      28000
+D5                             10-DEC-81
+
+
+11 rows selected.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> delete from deptt where dname='Accounts';
+delete from deptt where dname='Accounts'
+            *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> delete from dept where dname='Accounts';
+
+1 row deleted.
+
+SQL> select*from dept;
+
+DNO DNAME      LOCATION  DEPT_BUDGET
+--- ---------- --------- -----------
+D1  Marketing  CHN            500000
+D2  Research   MNG            300000
+D3  IT         BNG            400000
+D4  HR         BNG            200000
+    Corporate  HYD            700000
+D6  Management MNG            300000
+D7  Asset      BNG            400000
+
+7 rows selected.
+
+SQL> rollback;
+
+Rollback complete.
+
+SQL> select*from dept
+  2
+SQL> select*from dept;
+
+DNO DNAME      LOCATION  DEPT_BUDGET
+--- ---------- --------- -----------
+D1  Marketing  CHN            500000
+D2  Research   MNG            300000
+D3  IT         BNG            400000
+D4  HR         BNG            200000
+D5  Accounts   BNG            500000
+    Corporate  HYD            700000
+D6  Management MNG            300000
+D7  Asset      BNG            400000
+
+8 rows selected.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> delete from emp where empno=125 and prj_id='P2';
+
+1 row deleted.
+
+SQL> select*from emp;
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       101 Ravi       MGR                  10-OCT-85      32000
+D1                             02-OCT-01 P1
+
+       102 Raviraj    CLRK             106 10-DEC-80      24000
+D1                             12-NOV-00 P3
+
+       111 Raghu      GM               150 10-DEC-74      45000      15000
+                               03-DEC-85
+
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       150            CEO                  10-DEC-70      60000      30000
+                               03-DEC-90
+
+       105            CLRK                 02-OCT-80
+D1                             02-OCT-02 P3
+
+       106 PRASHANT   MGR              111 02-OCT-86
+D2                             02-OCT-87
+
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       123 Mahesh     CLRK             150 10-DEC-74      25000
+D3                             02-OCT-02 P2
+
+       108 Kamesh     CLRK             108 10-DEC-70
+D1                             02-OCT-85
+
+       133 Ankur      CLRK             102 10-DEC-80
+D1                             02-OCT-01 P3
+
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       199 Anuj       CLRK             101 10-DEC-80      28000
+D5                             10-DEC-81
+
+
+10 rows selected.
+
+SQL> rollback;
+
+Rollback complete.
+
+SQL> select*from emp;
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       101 Ravi       MGR                  10-OCT-85      32000
+D1                             02-OCT-01 P1
+
+       102 Raviraj    CLRK             106 10-DEC-80      24000
+D1                             12-NOV-00 P3
+
+       111 Raghu      GM               150 10-DEC-74      45000      15000
+                               03-DEC-85
+
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       150            CEO                  10-DEC-70      60000      30000
+                               03-DEC-90
+
+       105            CLRK                 02-OCT-80
+D1                             02-OCT-02 P3
+
+       125 Manu       A.MGR            150 10-DEC-80
+D4                             02-OCT-02 P2
+
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       106 PRASHANT   MGR              111 02-OCT-86
+D2                             02-OCT-87
+
+       123 Mahesh     CLRK             150 10-DEC-74      25000
+D3                             02-OCT-02 P2
+
+       108 Kamesh     CLRK             108 10-DEC-70
+D1                             02-OCT-85
+
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       133 Ankur      CLRK             102 10-DEC-80
+D1                             02-OCT-01 P3
+
+       199 Anuj       CLRK             101 10-DEC-80      28000
+D5                             10-DEC-81
+
+
+11 rows selected.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> update proj set dno='D5' where dno='D1' and prj_no='P1';
+update proj set dno='D5' where dno='D1' and prj_no='P1'
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (MCA158.SYS_C0068158) violated - child record
+found
+
+
+SQL> update proj set dno='D5' where Dno='D1' and prj_no='P1';
+update proj set dno='D5' where Dno='D1' and prj_no='P1'
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (MCA158.SYS_C0068158) violated - child record
+found
+
+
+SQL> desc dept;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DNO                                                VARCHAR2(3)
+ DNAME                                              VARCHAR2(10)
+ LOCATION                                           VARCHAR2(9)
+ DEPT_BUDGET                                        NUMBER(7)
+
+SQL> select*from Dno;
+select*from Dno
+            *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> select*from Dept;
+
+DNO DNAME      LOCATION  DEPT_BUDGET
+--- ---------- --------- -----------
+D1  Marketing  CHN            500000
+D2  Research   MNG            300000
+D3  IT         BNG            400000
+D4  HR         BNG            200000
+D5  Accounts   BNG            500000
+    Corporate  HYD            700000
+D6  Management MNG            300000
+D7  Asset      BNG            400000
+
+8 rows selected.
+
+SQL> select*from proj;
+
+DNO PRJ_N PRJ_NAME             PRJ_CREDIT STRT_DATE END_DATE    PRJ_FUND
+--- ----- -------------------- ---------- --------- --------- ----------
+D1  P1    Project_A                     4 21-OCT-22 28-SEP-23     400000
+D2  P1    Project_B                     2 29-AUG-23 29-SEP-23     200000
+D3  P2    Project_C                     3 30-AUG-23 30-SEP-23     300000
+D1  P3    Project_D                     5 01-SEP-23 01-OCT-23     500000
+D4  P2    Project_E                     7 02-SEP-23 02-OCT-23     700000
+D7  P2    Project_F                     7 03-SEP-23 03-OCT-23     800000
+D2  P3    Project_F                     7 03-SEP-23 03-OCT-23     800000
+
+7 rows selected.
+
+SQL> update proj set dno='D5' where Dno='D1' and prj_n='P1';
+update proj set dno='D5' where Dno='D1' and prj_n='P1'
+                                            *
+ERROR at line 1:
+ORA-00904: "PRJ_N": invalid identifier
+
+
+SQL> update proj set dno='D5' where Dno='D1' and prj_no='P1';
+update proj set dno='D5' where Dno='D1' and prj_no='P1'
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (MCA158.SYS_C0068158) violated - child record
+found
+
+
+SQL> update proj set dno='D5' where Dno='D1';
+update proj set dno='D5' where Dno='D1'
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (MCA158.SYS_C0068158) violated - child record
+found
+
+
+SQL> update proj set Dno='D5' where Dno='D1';
+update proj set Dno='D5' where Dno='D1'
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (MCA158.SYS_C0068158) violated - child record
+found
+
+
+SQL> update proj set dno='D5' where dno='D1';
+update proj set dno='D5' where dno='D1'
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (MCA158.SYS_C0068158) violated - child record
+found
+
+
+SQL> Update emp set job='MGR',sal=35000,mgrid=111 where empno=123;
+
+1 row updated.
+
+SQL> select*from emp;
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       101 Ravi       MGR                  10-OCT-85      32000
+D1                             02-OCT-01 P1
+
+       102 Raviraj    CLRK             106 10-DEC-80      24000
+D1                             12-NOV-00 P3
+
+       111 Raghu      GM               150 10-DEC-74      45000      15000
+                               03-DEC-85
+
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       150            CEO                  10-DEC-70      60000      30000
+                               03-DEC-90
+
+       105            CLRK                 02-OCT-80
+D1                             02-OCT-02 P3
+
+       125 Manu       A.MGR            150 10-DEC-80
+D4                             02-OCT-02 P2
+
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       106 PRASHANT   MGR              111 02-OCT-86
+D2                             02-OCT-87
+
+       123 Mahesh     MGR              111 10-DEC-74      35000
+D3                             02-OCT-02 P2
+
+       108 Kamesh     CLRK             108 10-DEC-70
+D1                             02-OCT-85
+
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+DEPTNO                         DATE_JOIN PRJ_I
+------------------------------ --------- -----
+       133 Ankur      CLRK             102 10-DEC-80
+D1                             02-OCT-01 P3
+
+       199 Anuj       CLRK             101 10-DEC-80      28000
+D5                             10-DEC-81
+
+
+11 rows selected.
+
+SQL> update emp set comm=10000 where job='MGR' and comm<10000;
+
+0 rows updated.
+
+SQL> commit;
+
+Commit complete.

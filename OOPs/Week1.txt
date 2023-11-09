@@ -1,0 +1,261 @@
+//Program to swap two numbers without using temporary variable
+//Author:Brijesh
+//Date:16/08/2023
+
+
+#include<iostream>
+using namespace std;
+int main()
+{
+        int x,y;
+        cout<<"Enter 2 numbers ";
+        cin>>x>>y;
+        cout<<"\nBefore swapping X = "<<x<<"\tY = "<<y;
+        x=x+y;
+        y=x-y;
+        x=x-y;
+        cout<<"\nAfter swapping X = "<<x<<"\tY = "<<y;
+        cout<<"\n";
+        return 0;
+}
+
+
+//Program to find largest of 3 numbers
+//Author: Brijesh
+//Regno:230970116
+//Date:09/08/2023
+#include<iostream>
+using namespace std;
+
+int main()
+{
+        int f1,f2,f3;
+        cout<<"Enter 3 numbers ";
+        cin>>f1>>f2>>f3;
+        if(f1> f2&f3)
+        {
+                cout<<f1<<" is largest of 3 numbers";
+
+        }
+        else if(f2>f3)
+        {
+                cout<<f2<<" is largest of 3 numbers";
+        }
+        else{
+                cout<<f3<<" is largest of 3 numbers";
+        }
+        cout<<"\n";
+        return 0;
+}
+
+
+
+
+//Program to find area of circle and triangle
+//Author : Brijesh
+//Date :16/08/2023
+
+#include<iostream>
+using namespace std;
+int main()
+{
+        float radius,base,height,AreaCircle,AreaTriangle;
+        cout<<"\nEnter radius of circle";
+        cin>>radius;
+        cout<<"\nEnter base of triangle";
+        cin>>base;
+        cout<<"\nEnter height of triangle";
+        cin>>height;
+        AreaCircle = 3.14159*radius*radius;
+        AreaTriangle = (base * height)/2;
+        cout<<"\nArea of circle:"<<AreaCircle;
+        cout<<"\nArea of triangle:"<<AreaTriangle;
+        cout<<"\n";
+        return 0;
+}
+
+
+//Program to convert seconds into hour,minutes,seconds
+//Author:Brijesh
+//Regno:230970116
+//Date:09/08/2023
+
+#include<iostream>
+using namespace std;
+int main()
+{
+        long int sec,hour=0,min=0,secO=0;
+        cout<<"Enter seconds";
+        cin>>sec;
+        hour=sec/3600;
+        min=(sec%3600)/60;
+        secO=(sec%3600)%60;
+        cout<<"Hour : "<<hour;
+        cout<<"\nMinutes :"<<min;
+        cout<<"\nSeconds :"<<secO;
+        cout<<"\n";
+        return 0;
+}
+
+
+//Program to convert MM to CM,INCH , FEET
+//Author : Brijesh
+//Date : 16/08/2023
+
+
+#include<iostream>
+using namespace std;
+int main()
+{
+        float cm,mm,inch,feet;
+        cout<<"Enter length in MilliMeter : ";
+        cin>>mm;
+        cm = mm/10;
+        inch = cm/2.54;
+        feet = inch/12;
+        cout<<"\nLength in MilliMeter :\t"<<mm<<"mm";
+        cout<<"\nLength in CentiMeter :\t"<<cm<<"cm";
+        cout<<"\nLength in Inches :\t"<<inch<<"inch";
+        cout<<"\nLenght in Feet :\t"<<feet<<"ft";
+        cout<<"\n";
+        return 0;
+
+}
+
+
+
+
+//Program to convert Farenheit to Celcius and Vice versa
+//Author:Brijesh
+//Date:16/08/2023
+
+
+
+#include<iostream>
+using namespace std;
+int main()
+{
+        int choice;
+        float F,C;
+        cout<<"\t\tMENU";
+        cout<<"\n1.Farenheit to Celcius\n2.Celcius to Farenheit";
+        cout<<"\nEnter your choice";
+        cin>>choice;
+        switch(choice)
+        {
+                case 1:cout<<"\nEnter Temperature in Farenheit ";
+                        cin>>F;
+                       C=(F-32)*5/9;
+                       cout<<F<<"\370F = "<<C<<"\370C";
+                       cout<<"\n";
+                       break;
+
+                case 2:cout<<"\nEnter Temperature in Celcius";
+                       cin>>C;
+                       F=(C*9/5+32);
+                       cout<<C<<"\370C = "<<F<<"\370F";
+                       cout<<"\n";
+                       break;
+
+                default:cout<<"Invalid Choice";
+                        cout<<"\n";
+                        break;
+        }
+        return 0;
+}
+
+
+
+
+//Program to find Compund Interest
+//Author:Brijesh
+//Date:16/08/2023
+
+
+#include<iostream>
+#include<cmath>
+using namespace std;
+int main()
+{
+        double Principal,Interest,N,Time,CI,A;
+        cout<<"\nEnter Principal Amount";
+        cin>>Principal;
+        cout<<"\nEnter Interest Rate :";
+        cin>>Interest;
+        cout<<"\nEnter No.of times interest is compounded per Year";
+        cin>>N;
+        cout<<"\nEnter time period ";
+        cin>>Time;
+        A = Principal * pow((1 + Interest /(N*100)),N*Time);
+        cout<<"\nFuture Amount ="<<A;
+        CI =A - Principal;
+        cout<<"\nCompound Interest = "<<CI;
+        cout<<"\n";
+        return 0;
+}
+
+
+
+//Program to design student score card
+//Author :Brijesh
+//RegNo: 230970116
+//Date:09/08/2023
+#include<iostream>
+using namespace std;
+int main()
+{
+        int RegNo,year,SemNo,M1,M2,M3,M4,M5;
+        string name,grade;
+        float avg,total;
+        cout<<"Enter Reg No.:";
+        cin>>RegNo;
+        cout<<"\nEnter Student name:";
+        cin>>name;
+        cout<<"\nEnter Year Of Joining:";
+        cin>>year;
+        cout<<"\nEnter Semester No.:";
+        cin>>SemNo;
+        cout<<"\nEnter marks in Object Oriented Programming:";
+        cin>>M1;
+        cout<<"\nEnter marks in DBMS:";
+        cin>>M2;
+        cout<<"\nEnter marks in Research Methodology:";
+        cin>>M3;
+        cout<<"\nEnter marks in Computational Mathematics:";
+        cin>>M4;
+        cout<<"\nEnter marks in Web Technologies:";
+        cin>>M5;
+ total=M1+M2+M3+M4+M5;
+        avg=total/5;
+        if(avg>=90){grade='A';}
+        else if(80<=avg<=89){grade='B';}
+        else if(61<=avg<=79){grade='C';}
+        else if(51<=avg<=59){grade='D';}
+        else if(41<=avg<=49){grade='E';}
+        else if(avg<=40){grade='F';}
+        system("clear");
+        cout<<"\n";
+        cout<<"\t\tScore Card for Student :"<<name;
+        cout<<"\nRegistration No :"<<RegNo<<"\tSemester:"<<SemNo<<"\tYear:"<<year;
+        cout<<"\nGrade Assigned:"<<grade;
+        cout<<"\n\nSerial No. \t\tSubject Name\t\tMarks Scored";
+        cout<<"\n\t\t\t\t\t\t(Out of 100)";
+        cout<<"\n";
+        for(int j=0;j<70;j++)
+        {
+                cout<<"-";
+        }
+        cout<<"\n1\t\tObject Oriented Programming\t\t"<<M1;
+        cout<<"\n2\t\tDBMS\t\t\t\t\t"<<M2;
+        cout<<"\n3\t\tResearch Methodology\t\t\t"<<M3;
+        cout<<"\n4\t\tComputational Mathematics\t\t"<<M4;
+        cout<<"\n5\t\tWeb Technologies\t\t\t"<<M5;
+        cout<<"\n\nTotal:"<<total;
+        cout<<"\nAverage:"<<avg;
+        cout<<"\nGrade:"<<grade;
+        cout<<"\n\n";
+        return 0;
+}
+
+
+
