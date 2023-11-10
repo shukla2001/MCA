@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="style.css">
+<style type="text/CSS">
+
+
+
+</style>
+</head>
+<body>
+
+
+
+<nav>
+  <h1>Boxes supported in JavaScript</h1>
+     <ul class="nav" id="sidemenu">
+           <li> <a href="#" class="active"> Home </a></li>
+           <li> <a href="#about"> About </a></li>
+           <li> <a href="#services"> Services </a></li>
+           <li> <a href="Article.html"> Photo Gallery </a></li>
+           <li> <a href="#certifications">Blog</a></li>
+           <li> <a href="#contact"> Contact </a></li>
+           <i class="fas fa-multiply" onclick="closemenu()" aria-hidden="true"></i>
+
+      </ul>
+
+</nav>
+
+<h2> What is Javascript?</h2 >
+
+
+<p>JavaScript is a lightweight, cross-platform, single-threaded, and interpreted compiled programming language. It is also known as the scripting language for webpages. 
+It is well-known for the development of web pages, and many non-browser environments also use it.JavaScript is a weakly typed language (dynamically typed). JavaScript 
+can be used for Client-side developments as well as Server-side developments. JavaScript is both an imperative and declarative type of language. JavaScript contains a 
+standard library of objects, like Array, Date, and Math, and a core set of language elements like operators, control structures, and statements.</p>
+
+<h1>Various Boxes supported in Javascript are as below</h1>
+
+<div class="p">
+  <div class="r">
+      <h2>Alert Box</h2>
+      <br><p>It is used to provide a warning message to users. 
+      It has only one 'OK' button to continue and select the next task.</p><br>
+      <input type="button" value="Alert" onclick="show1();">
+  </div> 
+  <div class="r">
+    <h2>Confirm Box</h2>
+    <br><p>It is widely used for taking the opinion from the user on the specific option. 
+    It includes two buttons, which are OK and Cancel.</p><br>
+    <input type="button" value="Confirm" onclick="show2();">   
+  </div>
+  <div class="r">
+    <h2>Prompt Box</h2>
+    <br><p>The prompt dialog box is used when it is required to pop-up a 
+    text box for getting the user input. Thus, it enables interaction with the user.</p><br>
+    <input type="button" value="Prompt" onclick="show3();"> 
+  </div>
+</div>
+
+
+</div>
+
+<h2>About</h2>
+<footer class="footer">
+    <div class="container">
+          <p>Computer science graduate with core programming knowledge.<br>
+            <br>
+          <p>Fun-fact - My fav book is<br> "Steal like an Artist"</p>
+    </div>
+</footer>
+
+
+<script type="text/javascript">   
+        function show1() {   
+            alert("It is an Alert dialog box");   
+        }   
+</script>  
+
+
+<script type="text/javascript">   
+        function show2() {   
+            var con = confirm ("It is a Confirm dialog box");   
+            if(con == true) {   
+                document.write ("User Want to continue");   
+            }    
+            else {   
+                document.write ("User does not want to continue");   
+            }   
+        }   
+</script> 
+
+
+<script type="text/javascript">   
+        function show3() {   
+            var value = prompt("Enter your Name : ", "Enter your name");   
+            document.write("Your Name is : " + value);   
+        }   
+</script> 
+  
+</html>

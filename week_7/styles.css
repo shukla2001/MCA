@@ -1,0 +1,142 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+button,
+input,
+textarea {
+  font-family: "Poppins", sans-serif;
+}
+
+body{
+
+    background: black ;
+    color: var(--text-black-900) ;
+}
+#header{
+    width: 100% ;
+    height: 100vh ;
+    background-position: center;
+}
+h1, h2{
+	color: #ee660c;
+	margin:55px 20px ;
+}
+
+P{
+  margin-left: 15px;
+  margin-right: 20px;
+	color: #b9b9b8;
+ font-size: 20px;
+}
+
+.p{
+  margin-right: 15px;
+  margin-left: 15px;
+  display: flex;
+}
+.r{
+margin: 5px;
+border: 5px solid goldenrod;
+}
+
+.r p{
+  margin-left: 10px;
+	color: #d7d5d5;
+  }
+.r input{
+  height: 15%;
+  width: 30%;
+  border-radius: 15px;
+  font-size: 25px;
+  font-weight:bolder;
+  background-color: #e6ee0c;
+  margin-left: 10px;
+  margin-bottom: 20px;
+  color: #ea0c0c;
+
+    }
+
+nav {
+    display:flex ;
+    align-items:center ;
+    justify-content: space-between ;
+    flex-wrap:wrap ;
+}
+
+nav ul li {
+    display:inline-block ;
+    list-style:none ;
+    margin:5px 20px ;
+}
+nav ul li a {
+    color: #eeff00;
+    text-decoration:solid ;
+    font-weight: bold;
+    font-size:20px ;
+    position: relative ;
+
+}
+.nav ul li a {
+    color: #eeff00;
+    text-decoration:solid ;
+    font-weight: bold;
+    font-size:20px ;
+    position: relative ;
+
+}
+
+
+
+  body {
+    box-sizing: border-box;
+    margin: 0;
+    
+  }
+  
+  .gallery {
+    text-align: center;
+    padding: 32px;
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+  }
+  
+  .footer .container{
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
+  /* Create four equal columns that sits next to each other */
+  .col {
+    flex: 25%;
+    max-width: 50%;
+    padding: 0 5px;
+  }
+  
+  .col img {
+    margin-top: 8px;
+    vertical-align: middle;
+    width: 100%;
+  }
+  
+  /* Responsive Tablet View - makes a two column*/
+  @media (max-width: 800px) {
+    .col {
+      flex: 100%;
+      max-width: 50%;
+    }
+  }
+  
+  /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+  @media (max-width: 600px) {
+    .col {
+      flex: 100%;
+      max-width: 100%;
+    }
+  }
