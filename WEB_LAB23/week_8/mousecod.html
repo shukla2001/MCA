@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Coordinates</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="400" height="400"></canvas>
+
+    <script>
+        // Get a reference to the canvas element and its context
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+
+        // Function to get mouse coordinates and display them
+        function getMouseCoordinates(event) {
+            const rect = canvas.getBoundingClientRect(); // Get the canvas position
+            const x = event.clientX - rect.left; // Calculate the X coordinate
+            const y = event.clientY - rect.top; // Calculate the Y coordinate
+
+            // Clear the canvas and display the coordinates
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillText(`X: ${x}, Y: ${y}`, 10, 20);
+        }
+
+        // Add a mousemove event listener to the canvas
+        canvas.addEventListener("mousemove", getMouseCoordinates);
+    </script>
+</body>
+</html>

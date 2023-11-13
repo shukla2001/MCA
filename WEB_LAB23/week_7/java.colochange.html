@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+h1, h2{
+	color: #ee660c;
+	margin:55px 20px ;
+}
+
+P{
+  margin-left: 15px;
+  margin-right: 20px;
+	color: #b9b9b8;
+ font-size: 20px;
+}
+
+.p{
+  margin-right: 15px;
+  margin-left: 15px;
+  display: flex;
+}
+.r{
+margin: 5px;
+border: 5px solid goldenrod;
+}
+
+.r p{
+  margin-left: 10px;
+	color: #d7d5d5;
+  }
+.r input{
+  height: 15%;
+  width: 30%;
+  border-radius: 15px;
+  font-size: 25px;
+  font-weight:bolder;
+  background-color: #e6ee0c;
+  margin-left: 10px;
+  margin-bottom: 20px;
+  color: #ea0c0c;
+
+    }
+
+
+</style>
+</head>
+<body style="background-color: black;">
+
+    <div class="p">
+        <div class="r"  onclick="changeBorderColor(1)">
+            <h2>Alert Box</h2>
+            <br><p class="Para">It is used to provide a warning message to users. 
+            It has only one 'OK' button to continue and select the next task.</p><br>
+            <input type="button" value="Alert" onclick="show1();">
+        </div> 
+        <div class="r" onclick="changeBorderColor(2)">
+          <h2>Confirm Box</h2>
+          <br><p class="Para">It is widely used for taking the opinion from the user on the specific option. 
+          It includes two buttons, which are OK and Cancel.</p><br>
+          <input type="button" value="Confirm" onclick="show2();">   
+        </div>
+        <div class="r" onclick="changeBorderColor(3)">
+          <h2>Prompt Box</h2>
+          <br><p class="Para">The prompt dialog box is used when it is required to pop-up a 
+          text box for getting the user input. Thus, it enables interaction with the user.</p><br>
+          <input type="button" value="Prompt" onclick="show3();"> 
+        </div>
+      </div>
+
+      <script>
+        function changeBorderColor(containerNumber) {
+          const container = document.querySelectorAll('.r')[containerNumber - 1];
+          const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+          container.style.borderColor = randomColor;
+        }
+      </script>
+
+</body>
+  
+</html>
